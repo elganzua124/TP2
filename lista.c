@@ -162,10 +162,10 @@ int comprobar_archivo(char *nombre_archivo)
 	{
 		fgets(linea,51,arch); // (19 x 2) + 10 + \n + \0 = 50
 
-		char *nom_blancas = malloc(65);
-		char *nom_negras = malloc(65);
+		nombre_blancas = malloc(65);
+		nombre_negras = malloc(65);
 
-		cant = sscanf(linea, "#CHS w:%s b:%s%*[\n]",nom_blancas,nom_negras);
+		cant = sscanf(linea, "#CHS w:%s b:%s%*[\n]",nombre_blancas,nombre_negras);
 		if (cant == 2)
 		{
 			color_jugador = BLANCO;
@@ -174,16 +174,16 @@ int comprobar_archivo(char *nombre_archivo)
 				if( chekar_coordenada(coord) ||  mover_pieza(tablero,color_jugador,coord) )
 				{
 					fputs("El archivo contiene movidas invalidas\n", stderr);
-					free(nom_blancas);
-					free(nom_negras);
+					free(nombre_blancas);
+					free(nombre_negras);
 					return 1;
 				}
 				jugada_a_string(cadena);
 
 				if(color_jugador == 0)
-					insertar_nodo(cadena,coord,nom_blancas);
+					insertar_nodo(cadena,coord,nombre_blancas);
 				else
-					insertar_nodo(cadena,coord,nom_negras);
+					insertar_nodo(cadena,coord,nombre_negras);
 				color_jugador = !color_jugador;
 			}
 			return 0;
@@ -191,8 +191,8 @@ int comprobar_archivo(char *nombre_archivo)
 		else
 			puts("Ha ocurrido un ERROR!");
 		fclose(arch);
-		free(nom_blancas);
-		free(nom_negras);
+		free(nombre_blancas);
+		free(nombre_negras);
 		return 1;
 	}
 	else
