@@ -123,23 +123,21 @@ void play_game(casillero_t tablero[8][8], char cadena[66], short cod)
 		fgets(coord, 7, stdin); // lee coordenadas
 		codigo = chekar_coordenada(coord); // chekea formato de coords
 
-		if( coord[0] == 'q' && coord[1] == '\n') // para salir
-			return;
-
 		if(codigo == 0) // si es valido el formato
 			codigo = mover_pieza(tablero,color_jugador,coord); // chekar en tablero
+		else if( coord[0] == 'q' && coord[1] == '\n') // como formato es invalido ver si era para salir
+			return;
 
-		while(codigo!= 0 && codigo != 5)
+		while(codigo)
 		{
 			imprimir_error( codigo );
 			fgets(coord, 7, stdin);
 			codigo = chekar_coordenada(coord);
 
-			if( coord[0] == 'q' && coord[1] == '\n') // para salir
+			if(codigo == 0) // si es valido el formato
+				codigo = mover_pieza(tablero,color_jugador,coord); // chekar en tablero
+			else if( coord[0] == 'q' && coord[1] == '\n') // como formato es invalido ver si era para salir
 				return;
-
-			if(codigo == 0)
-				codigo = mover_pieza(tablero,color_jugador,coord);
 		}
 		jugada_a_string(cadena);
 
