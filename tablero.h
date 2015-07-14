@@ -16,7 +16,7 @@ typedef struct nodo
 {
 	char jugada[6];
 	char *player;
-	char stg[65];
+	char stg[66];
 	struct nodo *ant;
 	struct nodo *sig;
 } nodo_t;
