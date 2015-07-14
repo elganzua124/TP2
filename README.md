@@ -1,5 +1,5 @@
 # TP2
-segunda etapa del tp del seminario de C.
+Segunda etapa del tp del seminario de C. De Francisco Herrera, coloquio a rendir el día miércoles 15 de julio de 2015.
 
 Para compilar ejecutar el comando:
 
