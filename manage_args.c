@@ -7,6 +7,13 @@ char *nombre_blancas;
 char *nombre_negras;
 char *nombre_archivo;
 
+void inic_tablero(casillero_t tablero[8][8]);
+int comprobar_archivo(char *nombre_archivo);
+void imprimir_lista();
+void play_game(casillero_t tablero[8][8], char cadena[66], short cod);
+int crear_archivo();
+
+
 short chequeo_nombre_archivo(char *nombre)
 {
 	short l = strlen(nombre); // .chs tiene long=4, el min sera de 5
