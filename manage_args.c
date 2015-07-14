@@ -117,12 +117,8 @@ void manejo_de_args(int argc, char *argv[])
 	{
 		inic_tablero(tablero);
 		cargar_nombre_archivo(argv,cod);
-		nombre_blancas = malloc(20);
-		nombre_negras = malloc(20);
 		if( !comprobar_archivo(nombre_archivo) )
 			imprimir_lista();
-		free(nombre_blancas);
-		free(nombre_negras);
 		free(nombre_archivo);
 	}
 	else if(cod == 3) // jugar sin archivo de salida
