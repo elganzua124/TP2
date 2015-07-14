@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include "tablero.h"
 
+void jugada_a_string(char cadena[66]);
+void insertar_nodo(char *cadena, char movimiento[6], char *nombre_jugador);
+
 void tablero_blanco(char cadena[66])
 {
 	int i, j,k=0;
@@ -107,7 +110,7 @@ void play_game(casillero_t tablero[8][8], char cadena[66], short cod)
 
 	for( ;; )
 	{
-		if( color_jugador = !color_jugador ) // va de 0 a 1 a 0 a 1...
+		if( (color_jugador = !color_jugador) ) // va de 0 a 1 a 0 a 1...
 		{
 			tablero_negro(cadena);
 			printf("\nTurno de %s.\n", nombre_negras);
@@ -143,9 +146,9 @@ void play_game(casillero_t tablero[8][8], char cadena[66], short cod)
 		if(cod == 4) // cargar en lista
 		{
 			if(color_jugador == 0)
-				InsertAtTail(cadena,coord,nombre_blancas);
+				insertar_nodo(cadena,coord,nombre_blancas);
 			else
-				InsertAtTail(cadena,coord,nombre_negras);
+				insertar_nodo(cadena,coord,nombre_negras);
 		}
 	}
 }
