@@ -39,7 +39,7 @@ void tablero_negro(char cadena[66])
 int chekar_coordenada(char coord[7])
 {
 	if( coord[5] != '\n' ) // cant de caracteres no validos, chequear si hay un '\n'
-	{
+	{//funciona cuando el stream es stdin, pero no cuando es un archivo, en tal caso hay q presionar enter
 		short i;
 		for( i=0; i<5 && coord[i] != '\n'; i++ ); // si corta por i==5, no hay '\n', limpiar buffer
 
