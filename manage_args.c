@@ -69,7 +69,7 @@ short chequeo_de_args(int argc, char *argv[])
 	{
 		if( !strcmp(argv[1],"--play") && !chequeo_nombre_archivo(argv[2]) )
 			return 2;
-	} else if( argc == 2 && !strcmp(argv[1],"--help") ) // tipio --help
+	} else if( argc == 2 && !strcmp(argv[1],"--help") ) // tipeó --help
 		return 5;
 	return 1;
 }
