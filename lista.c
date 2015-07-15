@@ -34,7 +34,7 @@ void insertar_nodo(char *cadena, char movimiento[6], char *nombre_jugador) {
 		return;
 	}
 	while(temp->sig != NULL)
-		temp = temp->sig; // Go To last Node
+		temp = temp->sig;
 	temp->sig = newNode;
 	newNode->ant = temp;
 }
@@ -111,10 +111,7 @@ void imprimir_lista()
 				color_jugador = !color_jugador;
 			}
 			else
-			{
-				color_jugador = BLANCO;
 				puts("TABLERO INICIAL. <n> proxima jugada <q> salir:");
-			}
 		}
 		else if(opc == 'n')
 		{
