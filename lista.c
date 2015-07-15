@@ -134,7 +134,6 @@ void imprimir_lista()
 		}
 		opc = leer_opcion();
 	}
-	exit(1);
 }
 
 int comprobar_archivo(char *nombre_archivo)
@@ -148,7 +147,7 @@ int comprobar_archivo(char *nombre_archivo)
 
 	if( (arch = fopen(nombre_archivo,"r")) )
 	{
-		fgets(linea,51,arch); // (19 x 2) + 10 + \n + \0 = 50
+		fgets(linea,51,arch); // (19c x 2) + 10c + '\n' + '\0' = 50c
 
 		nombre_blancas = malloc(65);
 		nombre_negras = malloc(65);
