@@ -80,7 +80,7 @@ void imprimir_lista()
 {
 	char cadena_inicial[65] = "RNBQKBNRPPPPPPPP # # # ## # # #  # # # ## # # # pppppppprnbqkbnr";
 
-	nodo_t *tmp = head, *inic = crear_nodo(cadena_inicial,"cero","tablero inicial");
+	nodo_t *tmp = head, *inic = crear_nodo(cadena_inicial,"-\n","-");
 
 	tmp->ant = inic;
 	inic->sig = tmp;
@@ -88,12 +88,11 @@ void imprimir_lista()
 
 	printf("\n\n\n\nWHITE PLAYER: %s        BLACK PLAYER: %s\n",nombre_blancas, nombre_negras);
 	tablero_blanco(cadena_inicial);
-	puts("          Tablero inicial.");
-	puts("          ----------------\n");
-	puts("<n> proxima jugada <q> salir:");
+	printf("Jugador: %s. Movimiento: %s\n", tmp->player, tmp->jugada);
+	puts("<n> proxima jugada <p> jugada anterior <q> salir:");
 	int opc = leer_opcion();
 
-	color_t color_jugador = NEGRO;
+	color_t color_jugador = BLANCO; // blanco = 0, negro = 1
 
 	while (opc != 'q')
 	{
@@ -101,43 +100,35 @@ void imprimir_lista()
 		{
 			if (tmp->ant)
 			{
-				color_jugador = !color_jugador;
 				tmp = tmp->ant;
 				printf("\n\n\n\nWHITE PLAYER: %s        BLACK PLAYER: %s\n",nombre_blancas, nombre_negras);
-				color_jugador == 0 ? tablero_blanco(tmp->stg) : tablero_negro(tmp->stg); 
+				if(tmp->ant == NULL) // su anterior es el tablero inicial
+					tablero_blanco(tmp->stg);
+				else
+					color_jugador == 0 ? tablero_blanco(tmp->stg) : tablero_negro(tmp->stg); 
 				printf("Jugador: %s. Movimiento: %s\n", tmp->player, tmp->jugada);
 				puts("<n> proxima jugada <p> jugada anterior <q> salir:");
+				color_jugador = !color_jugador;
 			}
 			else
 			{
 				color_jugador = BLANCO;
-				printf("\n\n\n\nWHITE PLAYER: %s        BLACK PLAYER: %s\n",nombre_blancas, nombre_negras);
-				tablero_blanco(cadena_inicial);
-				puts("          Tablero inicial.");
-				puts("          ----------------\n");
-				puts("<n> proxima jugada <q> salir:");
+				puts("TABLERO INICIAL. <n> proxima jugada <q> salir:");
 			}
 		}
-
 		else if(opc == 'n')
 		{
 			if(tmp->sig)
 			{
-				color_jugador = !color_jugador;
 				tmp = tmp->sig;
 				printf("\n\n\n\nWHITE PLAYER: %s        BLACK PLAYER: %s\n",nombre_blancas, nombre_negras);
 				color_jugador == 0 ? tablero_blanco(tmp->stg) : tablero_negro(tmp->stg);
 				printf("Jugador: %s. Movimiento: %s\n", tmp->player, tmp->jugada);
 				puts("<n> proxima jugada <p> jugada anterior <q> salir:");
+				color_jugador = !color_jugador;
 			}
 			else
-			{
-				printf("\n\n\n\nWHITE PLAYER: %s        BLACK PLAYER: %s\n",nombre_blancas, nombre_negras);
-				color_jugador == 0 ? tablero_blanco(tmp->stg) : tablero_negro(tmp->stg);
-				printf("Jugador: %s. Movimiento: %s\n", tmp->player, tmp->jugada);
 				puts("ULTIMA JUGADA. <p> jugada anterior <q> salir:");
-
-			}
 		}
 		else
 		{
